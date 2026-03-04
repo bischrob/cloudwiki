@@ -6,6 +6,7 @@ namespace OCA\CloudWiki\Controller;
 
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IRequest;
 use OCP\Util;
@@ -17,7 +18,12 @@ class PageController extends Controller
         parent::__construct($appName, $request);
     }
 
+    /**
+     * @NoAdminRequired
+     * @NoCSRFRequired
+     */
     #[NoAdminRequired]
+    #[NoCSRFRequired]
     public function index(): TemplateResponse
     {
         Util::addScript('cloudwiki', 'cloudwiki-main');
