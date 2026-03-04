@@ -27,6 +27,10 @@ class FileApiController extends Controller
         parent::__construct($appName, $request);
     }
 
+    /**
+     * @NoAdminRequired
+     * @NoCSRFRequired
+     */
     #[NoAdminRequired]
     #[NoCSRFRequired]
     public function open(): DataResponse
@@ -47,6 +51,10 @@ class FileApiController extends Controller
         }
     }
 
+    /**
+     * @NoAdminRequired
+     * @NoCSRFRequired
+     */
     #[NoAdminRequired]
     #[NoCSRFRequired]
     public function save(): DataResponse
