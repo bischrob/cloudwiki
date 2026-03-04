@@ -1,15 +1,15 @@
 # CloudWiki TODO
 
 ## 1. Scope and Foundation
-- [ ] Approve `scope.md` with all stakeholders.
+- [x] Approve `scope.md` with all stakeholders.
 - [ ] Confirm target Nextcloud version(s) and PHP/Node versions.
 - [ ] Define release strategy for internal alpha -> beta -> v1.
 
 ## 2. Project Setup
-- [ ] Create Nextcloud app skeleton (`appinfo`, `lib`, `src`, `templates`, `tests`).
-- [ ] Add tooling: lint, format, typecheck, unit test commands.
-- [ ] Add CI workflow for lint + tests + packaging.
-- [ ] Add contribution and local dev setup docs.
+- [x] Create Nextcloud app skeleton (`appinfo`, `lib`, `src`, `templates`, `tests`).
+- [x] Add tooling: lint, format, typecheck, unit test commands.
+- [x] Add CI workflow for lint + tests + packaging.
+- [x] Add contribution and local dev setup docs.
 
 ## 3. App Registration and Routing
 - [ ] Implement `appinfo/info.xml` metadata.

@@ -8,9 +8,26 @@ CloudWiki must support interoperable editing with Obsidian when both point to th
 ## Planning Docs
 - [Scope](./scope.md)
 - [TODO](./TODO.md)
+- [Vault Index](./Vault/Index.md)
 
 ## MVP Focus
 - Raw markdown editor (no live preview)
 - Wikilink suggestions, navigation, and note creation
 - Backlinks panel
 - Nextcloud-native auth, ACL, and file handling
+
+## Project Setup Status
+Step 2 (Project Setup) is scaffolded:
+- Nextcloud app baseline directories and bootstrap files
+- Frontend toolchain (Vue + TypeScript + Vite + Vitest)
+- PHP quality tooling (PHP-CS-Fixer + PHPStan + PHPUnit)
+- GitHub Actions CI for lint, test, and build
+- Contributor and local development docs
+
+## Quick Start
+1. `nvm use`
+2. `composer install`
+3. `npm ci`
+4. `make lint`
+5. `make test`
+6. `make build`

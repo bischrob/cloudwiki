@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Install Node deps
+        run: npm ci
+      - name: Install Composer deps
+        run: composer install --no-interaction --prefer-dist
+      - name: JS lint
+        run: npm run lint
+      - name: Prettier check
+        run: npm run format
+      - name: PHP CS check
+        run: composer lint:php
+      - name: PHPStan
+        run: composer stan
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Install Node deps
+        run: npm ci
+      - name: Install Composer deps
+        run: composer install --no-interaction --prefer-dist
+      - name: Frontend tests
+        run: npm run test
+      - name: PHP tests
+        run: composer test:php
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Install Node deps
+        run: npm ci
+      - name: Install Composer deps
+        run: composer install --no-interaction --prefer-dist
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Build assets
+        run: npm run build
+      - name: Validate app metadata
+        run: test -f appinfo/info.xml
