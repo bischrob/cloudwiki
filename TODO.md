@@ -12,15 +12,15 @@
 - [x] Add contribution and local dev setup docs.
 
 ## 3. App Registration and Routing
-- [ ] Implement `appinfo/info.xml` metadata.
-- [ ] Bootstrap app in `lib/AppInfo/Application.php`.
-- [ ] Register navigation entry and editor routes.
-- [ ] Add permissions and capability declarations required by Nextcloud.
+- [x] Implement `appinfo/info.xml` metadata.
+- [x] Bootstrap app in `lib/AppInfo/Application.php`.
+- [x] Register navigation entry and editor routes.
+- [x] Add permissions and capability declarations required by Nextcloud.
 
 ## 4. File Open/Save (Core Editor Path)
-- [ ] Add endpoint to open/load markdown content by file id/path.
-- [ ] Add endpoint to save markdown content with conflict detection.
-- [ ] Enforce ETag/mtime-based stale write protection.
+- [x] Add endpoint to open/load markdown content by file id/path.
+- [x] Add endpoint to save markdown content with conflict detection.
+- [x] Enforce ETag/mtime-based stale write protection.
 - [ ] Add integration tests for successful save and conflict responses.
 
 ## 5. Raw Markdown Editor UI

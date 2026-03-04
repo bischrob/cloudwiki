@@ -9,10 +9,19 @@
   <author mail="">bischrob</author>
   <namespace>CloudWiki</namespace>
   <category>productivity</category>
+  <navigations>
+    <navigation>
+      <id>cloudwiki</id>
+      <order>70</order>
+      <name>CloudWiki</name>
+      <route>cloudwiki.page.index</route>
+      <icon>app.svg</icon>
+    </navigation>
+  </navigations>
   <types>
     <filesystem/>
   </types>
   <dependencies>
-    <nextcloud min-version="29" max-version="31"/>
+    <nextcloud min-version="29" max-version="33"/>
   </dependencies>
 </info>

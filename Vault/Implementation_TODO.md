@@ -4,13 +4,14 @@ Primary backlog source: `../TODO.md`.
 
 ## Status
 - Step 2 (Project Setup) completed.
-- Current focus should move to Step 3 (App Registration and Routing) and Step 4 (File Open/Save).
+- Step 3 (App Registration and Routing) completed.
+- Step 4 core API work completed: markdown open/save endpoints and ETag conflict response.
+- Current focus should move to Step 4 integration tests and Step 5 raw editor implementation.
 
 ## Immediate Next Actions
-1. Finish Nextcloud app metadata/bootstrap verification in runtime environment.
-2. Implement file load/save endpoints with conflict detection.
-3. Build CodeMirror raw editor shell connected to open/save APIs.
-4. Add initial wikilink suggestion endpoint wired to stub index.
+1. Add integration tests for open/save/conflict API behavior.
+2. Build CodeMirror raw editor shell connected to open/save APIs.
+3. Add initial wikilink suggestion endpoint wired to stub index.
 
 ## Milestones
 - M1: App scaffold and routes running.

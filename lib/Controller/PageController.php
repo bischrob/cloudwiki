@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace OCA\CloudWiki\Controller;
 
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IRequest;
+use OCP\Util;
 
 class PageController extends Controller
 {
@@ -15,11 +17,12 @@ class PageController extends Controller
         parent::__construct($appName, $request);
     }
 
-    /**
-     * @NoAdminRequired
-     */
+    #[NoAdminRequired]
     public function index(): TemplateResponse
     {
+        Util::addScript('cloudwiki', 'cloudwiki-main');
+        Util::addStyle('cloudwiki', 'style');
+
         return new TemplateResponse('cloudwiki', 'main');
     }
 }

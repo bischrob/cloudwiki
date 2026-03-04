@@ -24,6 +24,15 @@ Step 2 (Project Setup) is scaffolded:
 - GitHub Actions CI for lint, test, and build
 - Contributor and local development docs
 
+## Runtime Status
+- Step 3 completed: app metadata, bootstrap, navigation entry, and route registration.
+- Step 4 partially completed: file open/save APIs implemented with ETag conflict detection.
+
+### Implemented API Endpoints
+- `GET /apps/cloudwiki/api/file?path=<relative.md>`
+- `PUT /apps/cloudwiki/api/file`
+  - JSON body: `path`, `content`, `expectedEtag` (optional but recommended)
+
 ## Quick Start
 1. `nvm use`
 2. `composer install`
