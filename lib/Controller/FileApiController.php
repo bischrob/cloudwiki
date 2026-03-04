@@ -10,6 +10,7 @@ use OCA\CloudWiki\Service\NoteFileService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
@@ -27,6 +28,7 @@ class FileApiController extends Controller
     }
 
     #[NoAdminRequired]
+    #[NoCSRFRequired]
     public function open(): DataResponse
     {
         $path = (string) $this->request->getParam('path', '');
@@ -46,6 +48,7 @@ class FileApiController extends Controller
     }
 
     #[NoAdminRequired]
+    #[NoCSRFRequired]
     public function save(): DataResponse
     {
         $rawBody = file_get_contents('php://input');
