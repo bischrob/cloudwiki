@@ -2,8 +2,8 @@
 
 ## 1. Scope and Foundation
 - [x] Approve `scope.md` with all stakeholders.
-- [ ] Confirm target Nextcloud version(s) and PHP/Node versions.
-- [ ] Define release strategy for internal alpha -> beta -> v1.
+- [x] Confirm target Nextcloud version(s) and PHP/Node versions.
+- [x] Define release strategy for internal alpha -> beta -> v1.
 
 ## 2. Project Setup
 - [x] Create Nextcloud app skeleton (`appinfo`, `lib`, `src`, `templates`, `tests`).
@@ -21,13 +21,13 @@
 - [x] Add endpoint to open/load markdown content by file id/path.
 - [x] Add endpoint to save markdown content with conflict detection.
 - [x] Enforce ETag/mtime-based stale write protection.
-- [ ] Add integration tests for successful save and conflict responses.
+- [x] Add integration tests for successful save and conflict responses.
 
 ## 5. Raw Markdown Editor UI
 - [ ] Integrate CodeMirror 6 in single-pane mode.
 - [ ] Add keyboard shortcuts: save, open link, create note.
-- [ ] Add autosave (debounced) and visible save status.
-- [ ] Add unsaved-changes navigation guard.
+- [x] Add autosave (debounced) and visible save status.
+- [x] Add unsaved-changes navigation guard.
 
 ## 6. Wikilinks
 - [ ] Parse and highlight `[[wikilink]]` tokens in editor text.

@@ -82,6 +82,8 @@
 
 	const apiBase = resolveApiBase()
 	let currentEtag = null
+	let hasUnsavedChanges = false
+	let autosaveTimer = null
 
 	const setStatus = (message, mode = 'idle') => {
 		statusEl.className = `cw-status cw-status-${mode}`
@@ -132,6 +134,7 @@
 
 			editor.value = typeof payload.content === 'string' ? payload.content : ''
 			currentEtag = typeof payload.etag === 'string' ? payload.etag : null
+			hasUnsavedChanges = false
 			setStatus(
 				`Opened ${path} (etag ${escapeHtml(currentEtag || 'n/a')}, mtime ${payload.mtime || 'n/a'}).`,
 				'success',
@@ -143,15 +146,19 @@
 		}
 	}
 
-	const saveNote = async () => {
+	const saveNote = async (isAutosave = false) => {
 		const path = pathInput.value.trim()
 		if (!isValidMdPath(path)) {
 			setStatus('Path must be a valid .md path with no traversal tokens.', 'error')
 			return
 		}
 
+		if (isAutosave && !hasUnsavedChanges) {
+			return
+		}
+
 		setBusy(true)
-		setStatus('Saving note...', 'idle')
+		setStatus(isAutosave ? 'Autosaving note...' : 'Saving note...', 'idle')
 		try {
 			const response = await fetch(apiBase, {
 				method: 'PUT',
@@ -183,12 +190,25 @@
 			}
 
 			currentEtag = typeof payload.etag === 'string' ? payload.etag : currentEtag
-			setStatus(`Saved ${path} (etag ${escapeHtml(currentEtag || 'n/a')}).`, 'success')
+			hasUnsavedChanges = false
+			setStatus(
+				`${isAutosave ? 'Autosaved' : 'Saved'} ${path} (etag ${escapeHtml(currentEtag || 'n/a')}).`,
+				'success',
+			)
 		} catch (error) {
 			setStatus(`Save failed: ${error instanceof Error ? error.message : 'Network error'}`, 'error')
 		} finally {
 			setBusy(false)
 		}
+	}
+
+	const scheduleAutosave = () => {
+		if (autosaveTimer !== null) {
+			clearTimeout(autosaveTimer)
+		}
+		autosaveTimer = window.setTimeout(() => {
+			void saveNote(true)
+		}, 1200)
 	}
 
 	openButton.addEventListener('click', () => {
@@ -197,10 +217,40 @@
 	saveButton.addEventListener('click', () => {
 		void saveNote()
 	})
+	editor.addEventListener('input', () => {
+		hasUnsavedChanges = true
+		setStatus('Unsaved changes...', 'warn')
+		scheduleAutosave()
+	})
 	pathInput.addEventListener('keydown', (event) => {
 		if (event.key === 'Enter') {
 			event.preventDefault()
 			void openNote()
 		}
+	})
+	document.addEventListener('keydown', (event) => {
+		if (!(event.metaKey || event.ctrlKey)) {
+			return
+		}
+
+		const key = event.key.toLowerCase()
+		if (key === 's') {
+			event.preventDefault()
+			void saveNote()
+			return
+		}
+
+		if (key === 'o') {
+			event.preventDefault()
+			pathInput.focus()
+			pathInput.select()
+		}
+	})
+	window.addEventListener('beforeunload', (event) => {
+		if (!hasUnsavedChanges) {
+			return
+		}
+		event.preventDefault()
+		event.returnValue = ''
 	})
 })()

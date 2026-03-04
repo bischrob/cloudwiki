@@ -9,6 +9,8 @@ CloudWiki must support interoperable editing with Obsidian when both point to th
 - [Scope](./scope.md)
 - [TODO](./TODO.md)
 - [Vault Index](./Vault/Index.md)
+- [Versions and Runtime Targets](./docs/versions-and-runtime.md)
+- [Release Strategy](./docs/release-strategy.md)
 
 ## MVP Focus
 - Raw markdown editor (no live preview)
@@ -26,8 +28,8 @@ Step 2 (Project Setup) is scaffolded:
 
 ## Runtime Status
 - Step 3 completed: app metadata, bootstrap, navigation entry, and route registration.
-- Step 4 partially completed: file open/save APIs implemented with ETag conflict detection.
-- Step 5 in progress: browser editor UI now supports open/save against the API with conflict messaging.
+- Step 4 completed: file open/save APIs implemented with stale-write conflict handling and tests.
+- Step 5 in progress: browser editor UI supports open/save, autosave, keyboard shortcuts (`Ctrl/Cmd+S`, `Ctrl/Cmd+O`), and unsaved-change guard.
 
 ### Implemented API Endpoints
 - `GET /apps/cloudwiki/api/file?path=<relative.md>`
