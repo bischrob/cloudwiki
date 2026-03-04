@@ -1,3 +1,104 @@
 #cloudwiki-root {
   min-height: 100%;
 }
+
+.cw-shell {
+  box-sizing: border-box;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px 24px;
+}
+
+.cw-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.cw-header p {
+  margin: 6px 0 0;
+  color: var(--color-text-lighter);
+}
+
+.cw-toolbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.cw-toolbar input {
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-main-background);
+  color: var(--color-main-text);
+}
+
+.cw-toolbar button {
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-background-hover);
+  color: var(--color-main-text);
+  cursor: pointer;
+}
+
+.cw-toolbar button:hover:not(:disabled) {
+  background: var(--color-background-dark);
+}
+
+.cw-status {
+  margin: 10px 0 0;
+  font-size: 0.92rem;
+}
+
+.cw-status-idle {
+  color: var(--color-text-lighter);
+}
+
+.cw-status-success {
+  color: #14824d;
+}
+
+.cw-status-warn {
+  color: #9a6a00;
+}
+
+.cw-status-error {
+  color: #c42d16;
+}
+
+.cw-editor-wrap {
+  margin-top: 10px;
+}
+
+.cw-editor {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 62vh;
+  padding: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-main-background);
+  color: var(--color-main-text);
+  font-family: "Fira Code", "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+@media (max-width: 720px) {
+  .cw-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .cw-toolbar label {
+    margin-bottom: -2px;
+  }
+
+  .cw-editor {
+    min-height: 55vh;
+  }
+}

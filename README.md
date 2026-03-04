@@ -27,6 +27,7 @@ Step 2 (Project Setup) is scaffolded:
 ## Runtime Status
 - Step 3 completed: app metadata, bootstrap, navigation entry, and route registration.
 - Step 4 partially completed: file open/save APIs implemented with ETag conflict detection.
+- Step 5 in progress: browser editor UI now supports open/save against the API with conflict messaging.
 
 ### Implemented API Endpoints
 - `GET /apps/cloudwiki/api/file?path=<relative.md>`
